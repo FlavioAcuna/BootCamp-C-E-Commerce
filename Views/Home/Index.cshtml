@@ -1,0 +1,12 @@
+﻿@model IndexViewModel
+<div class="container-fluid">
+    <div class="row">
+        @await Html.PartialAsync("Partials/_ShowProducts", Model.ListaProductos)
+    </div>
+    <div class="row">
+        @await Html.PartialAsync("Partials/_ShowOrders")
+    </div>
+    <div class="row">
+        @await Html.PartialAsync("Partials/_ShowCustomers", Model.ListaCustomers)
+    </div>
+</div>

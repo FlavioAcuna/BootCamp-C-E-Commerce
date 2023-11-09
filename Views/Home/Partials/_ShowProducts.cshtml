@@ -1,0 +1,21 @@
+@model List<Product>
+@{
+    int count = 0;
+}
+@foreach (Product prod in Model)
+{
+    count++;
+    if (count == 6)
+    {
+        <div class="col">
+            <a class="align-items-center" href="">Show more products</a>
+        </div>
+        break;
+    }
+    <div class="col text-center">
+        <img src="@prod.ImageUrl" class="img-thumbnail rounded mx-auto d-block" style="height: 30%;">
+        <p>@prod.Name</p>
+        <p>@prod.Quantity left</p>
+    </div>
+
+}

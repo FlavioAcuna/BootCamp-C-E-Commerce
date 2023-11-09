@@ -1,0 +1,26 @@
+@model ProductViewModel
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 col-sm-3 mx-3 ">
+            <div class="row">
+                <h5><strong><u>Add a new product</u></strong></h5>
+            </div>
+            <div class="row">
+                @await Html.PartialAsync("Partials/_AddProduct", Model.oneProduct)
+            </div>
+        </div>
+        <div class="col">
+            <div class="row justify-content-md-center">
+                @foreach (Product prod in Model.productosList)
+                {
+                    <div class="col-6 col-sm-3 text-center">
+                        <img src="@prod.ImageUrl" >
+                        <p>@prod.Name</p>
+                        <p>@prod.Quantity left</p>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</div>

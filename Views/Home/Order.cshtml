@@ -1,0 +1,35 @@
+@model OrderViewModel
+<div class="container-fluid">
+    <div class="row justify-content-start">
+        <div class="col-4">
+            <h3><u>Add a new order</u></h3>
+        </div>
+    </div>
+    @await Html.PartialAsync("Partials/_AddOrder")
+    <div class="row p-5">
+        <div class="col">
+            <table class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (Customer cus in Model.ListaOrders)
+                    {
+                        foreach (Order ord in cus.OrderInCustomer)
+                        {
+                            <td>@ord.CustomerInOrder.CustomerName</td>
+                            <td>@ord.ProductInOrder.Name</td>
+                            <td>@ord.Quantity</td>
+                            <td>@ord.CreatedAt.ToString("MMM dd,yyyy")</td>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

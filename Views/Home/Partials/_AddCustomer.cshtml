@@ -1,0 +1,9 @@
+@model Customer
+<div class="row">
+    <form asp-action="AddCustomer" method="post" asp-controller="Home">
+        <label asp-for="CustomerName">Customer Name:</label>
+        <input asp-for="CustomerName">
+        <span asp-validation-for="CustomerName"></span>
+        <button class="btn btn-primary">Add</button>
+    </form>
+</div>
