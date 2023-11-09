@@ -1,29 +1,7 @@
 @model OrderViewModel
 <div class="row">
     <form asp-action="AddOrder" method="post" asp-controller="Home">
-        <div class="row">
-            <div class="col-auto">
-                <label>Customer</label>
-                <select asp-for="@Model.AddOrder.CustomerId">
-                    @foreach (Customer cus in Model.ListaOrders)
-                    {
-                        <option value="@cus.CustomerId">@cus.CustomerName</option>
-                    }
-                </select>
-            </div>
-            <div class="col-auto">
-                <label>Product</label>
-                <select asp-for="@Model.AddOrder.ProductId">
-                    @foreach (Product prd in Model.ListProductOrder)
-                    {
-                        <option value="@prd.ProductId">@prd.Name</option>
-                    }
-                </select>
-            </div>
-            <div class="col-auto">
-                @await Html.PartialAsync("Partials/_ValidateQuan", Model.AddOrder)
-            </div>
-        </div>
+        @await Html.PartialAsync("Partials/_ValidateQuan", Model.AddOrder)
         <button class="btn btn-primary mt-3">Order</button>
     </form>
 </div>

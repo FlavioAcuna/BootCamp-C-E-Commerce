@@ -20,7 +20,8 @@ public class HomeController : Controller
         IndexViewModel indexvimo = new IndexViewModel
         {
             ListaProductos = _context.products.ToList(),
-            ListaCustomers = _context.customers.OrderByDescending(cu => cu.CreatedAt).ToList()
+            ListaCustomers = _context.customers.OrderByDescending(cu => cu.CreatedAt).ToList(),
+            ListaOrders = _context.orders.OrderByDescending(cu => cu.CreatedAt).ToList()
         };
         return View(indexvimo);
     }
@@ -70,6 +71,8 @@ public class HomeController : Controller
     [HttpGet("orders")]
     public IActionResult OrderView()
     {
+        ViewBag.ListaCusto = _context.customers.ToList();
+        ViewBag.ListaProduct = _context.products.ToList();
         OrderViewModel ordervimo = new OrderViewModel
         {
             ListaOrders = _context.customers.Include(c => c.OrderInCustomer).ThenInclude(p => p.ProductInOrder).ToList(),
@@ -82,6 +85,8 @@ public class HomeController : Controller
     [HttpPost("orders")]
     public IActionResult AddOrder(Order newOrder)
     {
+        ViewBag.ListaCusto = _context.customers.ToList();
+        ViewBag.ListaProduct = _context.products.ToList();
         OrderViewModel ordervimo = new OrderViewModel
         {
             ListaOrders = _context.customers.Include(c => c.OrderInCustomer).ThenInclude(p => p.ProductInOrder).ToList(),
@@ -99,6 +104,7 @@ public class HomeController : Controller
         {
             return View("Order", ordervimo);
         }
+
     }
 
     [HttpPost("customers")]

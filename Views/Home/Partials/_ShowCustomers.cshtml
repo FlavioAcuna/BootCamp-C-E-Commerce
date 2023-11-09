@@ -13,7 +13,7 @@
         <a asp-action="CustomerView" asp-controller="Home">Show all customers</a>
         break;
     }
-    <h2>@custo.CustomerName joined the store @{
+    <h4>@custo.CustomerName joined the store @{
             DateTime fechapost = custo.CreatedAt;
             DateTime fechaAhora = DateTime.Now;
             TimeSpan restante = (fechaAhora - fechapost);
@@ -32,6 +32,6 @@
 
             }
             @hora
-        }</h2>
+        }</h4>
 
 }

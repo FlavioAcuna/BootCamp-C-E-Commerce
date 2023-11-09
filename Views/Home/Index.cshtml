@@ -4,7 +4,7 @@
         @await Html.PartialAsync("Partials/_ShowProducts", Model.ListaProductos)
     </div>
     <div class="row">
-        @await Html.PartialAsync("Partials/_ShowOrders")
+        @await Html.PartialAsync("Partials/_ShowOrders", Model.ListaOrders)
     </div>
     <div class="row">
         @await Html.PartialAsync("Partials/_ShowCustomers", Model.ListaCustomers)

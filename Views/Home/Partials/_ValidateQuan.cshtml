@@ -1,4 +1,28 @@
 @model Order
-<label asp-for="Quantity">Quantity</label>
-<input asp-for="Quantity">
-<span asp-validation-for="Quantity"></span>
+
+<div class="row">
+    <div class="col-auto">
+        <label>Customer</label>
+        <select asp-for="CustomerId">
+            @foreach (var item in ViewBag.ListaCusto)
+            {
+                <option value="@item.CustomerId">@item.CustomerName</option>
+            }
+        </select>
+    </div>
+    <div class="col-auto">
+        <label>Product</label>
+        <select asp-for="ProductId">
+            @foreach (var item in ViewBag.ListaProduct)
+            {
+                <option value="@item.ProductId">@item.Name</option>
+            }
+        </select>
+    </div>
+    <div class="col-auto">
+        <label asp-for="Quantity">Quantity</label>
+        <input asp-for="Quantity">
+        <span asp-validation-for="Quantity"></span>
+
+    </div>
+</div>

@@ -1,0 +1,37 @@
+@model List<Order>
+<div class="row">
+    <h4><strong><u>Recent Orders</u></strong></h4>
+</div>
+@{
+    int count = 0;
+}
+@foreach (Order ord in Model)
+{
+    count++;
+    if (count == 4)
+    {
+        <a asp-action="OrderView" asp-controller="Home">Show all customers</a>
+        break;
+    }
+    <h4>@ord.CustomerInOrder.CustomerName pruchased @ord.Quantity @ord.ProductInOrder.Name @{
+            DateTime fechapost = ord.CreatedAt;
+            DateTime fechaAhora = DateTime.Now;
+            TimeSpan restante = (fechaAhora - fechapost);
+            string hora = "";
+            if (restante.Minutes <= 60 && restante.Hours <= 0)
+            {
+                hora = $"{restante.Minutes} Minute(s) Ago";
+            }
+            else if (restante.Days > 0)
+            {
+                hora = $"{restante.Days} Day(s) Ago";
+            }
+            else
+            {
+                hora = $"{restante.Hours} Hour(s) Ago";
+
+            }
+            @hora
+        }</h4>
+
+}

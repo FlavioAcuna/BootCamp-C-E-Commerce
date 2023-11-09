@@ -22,10 +22,12 @@
                     {
                         foreach (Order ord in cus.OrderInCustomer)
                         {
-                            <td>@ord.CustomerInOrder.CustomerName</td>
-                            <td>@ord.ProductInOrder.Name</td>
-                            <td>@ord.Quantity</td>
-                            <td>@ord.CreatedAt.ToString("MMM dd,yyyy")</td>
+                            <tr>
+                                <td>@ord.CustomerInOrder.CustomerName</td>
+                                <td>@ord.ProductInOrder.Name</td>
+                                <td>@ord.Quantity</td>
+                                <td>@ord.CreatedAt.ToString("MMM dd,yyyy")</td>
+                            </tr>
                         }
                     }
                 </tbody>
